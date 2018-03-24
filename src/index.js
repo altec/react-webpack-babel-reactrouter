@@ -1,8 +1,12 @@
-function component() {
-  var element = document.createElement("div");
+import { cube } from "./math.js";
+import "./style.css";
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(["Hello", "webpack"], " ");
+function component() {
+  var element = document.createElement("pre");
+
+  element.innerHTML = ["Hello webpack!", "5 cubed is equal to " + cube(5)].join(
+    "\n\n"
+  );
 
   return element;
 }
