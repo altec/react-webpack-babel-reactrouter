@@ -4,9 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build:prod": "webpack --config webpack.prod.js",
-    "build:dev": "webpack --config webpack.dev.js",
-    "dev": "webpack-dev-server --open --config webpack.dev.js",
+    "build:prod": "webpack --config config/webpack.prod.js",
+    "build:dev": "webpack --config config/webpack.dev.js",
+    "dev": "webpack-dev-server --open --config config/webpack.dev.js",
     "start": "http-server dist"
   },
   "author": "",
@@ -23,6 +23,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "compression-webpack-plugin": "^1.1.11",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",

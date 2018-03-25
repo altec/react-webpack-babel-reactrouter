@@ -1,16 +1,17 @@
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WorkboxPlugin = require("workbox-webpack-plugin");
+const path = require("path");
 
 module.exports = {
   entry: {
-    app: "./src/index.js"
+    app: path.resolve(__dirname, "../app/index.js")
   },
   plugins: [
-    new CleanWebpackPlugin(["dist"]),
+    new CleanWebpackPlugin(["dist"], { root: path.resolve(__dirname, "../") }),
     new HtmlWebpackPlugin({
       title: "Vanila React",
-      template: "./src/index.html",
+      template: "./app/index.html",
       inject: "body"
     }),
     new WorkboxPlugin.GenerateSW({
@@ -28,7 +29,8 @@ module.exports = {
         exclude: /(node_modules|dist)/,
         loader: "eslint-loader",
         options: {
-          failOnWarning: true
+          failOnWarning: true,
+          cache: true
         }
       },
       {
