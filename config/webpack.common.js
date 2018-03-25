@@ -8,12 +8,15 @@ module.exports = {
     app: path.resolve(__dirname, "../app/index.js")
   },
   plugins: [
+    // Always delete dist folder before build
     new CleanWebpackPlugin(["dist"], { root: path.resolve(__dirname, "../") }),
+    // Creat index.html from template
     new HtmlWebpackPlugin({
       title: "Vanila React",
       template: "./app/index.html",
       inject: "body"
     }),
+    // Create service worker
     new WorkboxPlugin.GenerateSW({
       // these options encourage the ServiceWorkers to get in there fast
       // and not allow any straggling "old" SWs to hang around
@@ -24,6 +27,7 @@ module.exports = {
   module: {
     rules: [
       {
+        // lint the code before babel!
         enforce: "pre",
         test: /\.js$/,
         exclude: /(node_modules|dist)/,
